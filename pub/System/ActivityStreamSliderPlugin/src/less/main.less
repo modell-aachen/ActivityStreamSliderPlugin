@@ -1,0 +1,154 @@
+/**
+ * This is the main application stylesheet. It should include or import all
+ * stylesheets used throughout the application as this is the only stylesheet in
+ * the Grunt configuration that is automatically processed.
+ */
+
+
+/**
+ * First, we include the Twitter Bootstrap LESS files. Only the ones used in the
+ * project should be imported as the rest are just wasting space.
+ */
+
+@import '../../vendor/bootstrap/less/bootstrap.less';
+
+
+/**
+ * This is our main variables file. We must include it last so we can overwrite any variable
+ * definitions in our imported stylesheets.
+ */
+
+@import 'variables.less';
+
+
+.sidebar-wrapper {
+  position: relative;
+  height: 100%;
+  overflow: auto;
+}
+#sidebar {
+  background-color: #fff;
+}
+
+.close-sidebar {
+    display: block;
+    position: absolute;
+    top: 0px;
+    right: 10px;
+    padding: 10px;
+    color: #fff;
+}
+.close-sidebar:hover {
+    color: #fff;
+}
+
+#slider_header h1{
+      border: none;
+    font-size: 20px;
+    margin-top: 30px;
+}
+
+#slider_header {
+    background-color: #39526D;
+    margin-top: -20px;
+    padding: 20px;
+    color: #fff;
+}
+
+.aggregated_content {
+  
+    padding: 1px 10px;
+    border-bottom: 1px solid grey;
+    opacity: 1;
+}
+
+
+.aggregated_content.ng-enter {
+    -webkit-transition: 1s;
+    transition: 1s;
+    opacity: 0;
+}
+.aggregated_content.ng-enter-active {
+    opacity: 1;
+}
+
+.aggregated_content i.fa:hover {
+  color:#39526D;
+}
+
+
+.aggregated_content.unread {
+  background-color: #C5E6FF;
+}
+
+.aggregated_content.unread:hover {
+  background-color: lighten(#C5E6FF, 5%);
+}
+
+.aggregated_content.read {
+  background-color: #F0F4F8;
+  color:grey;
+}
+
+.aggregated_content.read h2, .aggregated_content.read h2:hover{
+  color:grey;
+}
+
+.aggregated_content.read:hover {
+  background-color: lighten(#F0F4F8, 5%);
+}
+
+.aggregated_content td div a{
+  color: #000;
+}
+
+.aggregated_content td div a:hover{
+  color: #000;
+}
+
+.aggregated_content h2{
+  font-size: 14px;
+    padding: 5px;
+    border: none;
+    margin-top: 5px;
+    margin-bottom: 0px;
+    font-weight: bold;
+    color: #000;
+}
+
+.aggregated_content h2:hover {
+  color:#000;
+}
+
+.aggregated_content ul {
+  padding-left: 5px;
+}
+
+.aggregated_content ul li {
+    border-left: 3px solid #B5B5B5;
+    padding: 0px;
+    line-height: 1em;
+    padding-left: 10px;
+    margin-bottom: 10px;
+    list-style: none;
+}
+
+.aggregated_content div {
+  padding: 1px 15px;
+}
+
+.aggregated_list {
+  width: 100%;
+}
+
+.aggregated_list i.fa {
+    color: grey;
+}
+
+/**
+ * Now that all app-wide styles have been applied, we can load the styles for
+ * all the submodules and components we are using. 
+ *
+ * TODO: In a later version of this boilerplate, I'd like to automate this.
+ */
+

@@ -1,0 +1,17 @@
+<table class="aggregated_list">
+    <tr class="aggregated_content" ng-class="{unread: !item.read, read: item.read}" ng-repeat="item in aggregated_items track by item.id">
+        <td>
+            <div >
+                <a ng-href="/{{item.path}}"><h2>{{item.title}}</h2></a>
+                <ul>
+                    <li ng-repeat="change in item.changes"><span style="color:grey;font-size:0.8em;"><span  am-time-ago="change.created" am-preprocess="unix"></span> - {{change.actor}}</span><br>{{change.description}}</li>
+                </ul>
+            </div>
+        </td>
+        <td>
+        <i ng-click="toggle_status_agg($index)" class="fa fa-3x" ng-class="{'fa-square-o': !item.read, 'fa-check-square': item.read}"></i>
+        </td>
+    </tr>
+</table>
+<div style="text-align:center;margin-top:20px;margin-bottom:10px;"><button ng-click="load_more_aggregated()" type="button" class="btn btn-default">Weitere laden</button></div>
+
