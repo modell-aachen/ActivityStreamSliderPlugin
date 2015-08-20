@@ -1,5 +1,5 @@
 /**
- * ActivityStreamSliderPlugin - v0.0.1 - 2015-08-14
+ * ActivityStreamSliderPlugin - v0.0.1 - 2015-08-20
  * https://modell-aachen.de
  *
  * Copyright (c) 2015 Daniel Thulfaut
