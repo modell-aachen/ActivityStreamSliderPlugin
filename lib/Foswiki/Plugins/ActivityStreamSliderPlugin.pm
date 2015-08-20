@@ -13,7 +13,6 @@ use Foswiki::Time ();
 use DBI;
 use Encode;
 use JSON;
-use Number::Bytes::Human qw(format_bytes);
 
 our $VERSION = '0.1';
 our $RELEASE = '0.1';
