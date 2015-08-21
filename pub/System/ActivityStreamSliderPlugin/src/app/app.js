@@ -3,7 +3,8 @@ angular.module('ngActivityStreamSlider', [
     'templates-app',
     'templates-common',
     'angularMoment',
-    'ngAnimate'
+    'ngAnimate',
+    'ngSanitize'
 ])
 
 .config(function myAppConfig($controllerProvider) {

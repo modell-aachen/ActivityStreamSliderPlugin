@@ -4,7 +4,7 @@
             <div >
                 <a ng-href="/{{item.path}}"><h2>{{item.title}}</h2></a>
                 <ul>
-                    <li ng-repeat="change in item.changes"><span style="color:grey;font-size:0.8em;"><span  am-time-ago="change.created" am-preprocess="unix"></span> - {{change.actor}}</span><br>{{change.description}}</li>
+                    <li ng-repeat="change in item.changes"><span style="color:grey;font-size:0.8em;"><span  am-time-ago="change.created" am-preprocess="unix"></span> - {{change.actor}}</span><br><span ng-bind-html="change.description"></span></li>
                 </ul>
             </div>
         </td>

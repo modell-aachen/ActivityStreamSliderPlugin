@@ -37,9 +37,9 @@
 
         function toggle_status(item) {
             if(item.read){
-                return aggregatedModelMockService.set_unread(item.id);
+                return aggregatedModelMockService.set_unread(item);
             } else {
-                return aggregatedModelMockService.set_read(item.id);
+                return aggregatedModelMockService.set_read(item);
             }
         }
 

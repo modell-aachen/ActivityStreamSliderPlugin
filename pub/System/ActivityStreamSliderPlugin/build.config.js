@@ -71,7 +71,8 @@ module.exports = {
       'vendor/simpler-sidebar/dist/jquery.simpler-sidebar.min.js',
       'vendor/moment/moment.js',
       'vendor/moment/locale/de.js',
-      'vendor/angular-moment/angular-moment.min.js'
+      'vendor/angular-moment/angular-moment.min.js',
+      'vendor/angular-sanitize/angular-sanitize.min.js'
     ],
     css: [
     ],
