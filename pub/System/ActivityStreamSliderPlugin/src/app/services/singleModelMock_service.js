@@ -26,159 +26,45 @@
                 actor: 'CarstenBehrens',
                 verb: 'COMMENT',
                 description: 'Neuer Kommentar von CarstenBehrens'
-            },
-            {
-                id: '12334wdfsdr12',
-                path: 'Processes/Vertrieb/CrmPflegen',
-                title: 'Vertriebsprozess',
-                created: 1439543178,
-                read: true,
-                actor: 'AlexanderStoffers',
-                verb: 'KVP',
-                description: 'Neuer freigebener Stand'
-            },
-            {
-                id: '12334wdfsdr13',
-                path: 'Processes/Vertrieb/CrmPflegen',
-                title: 'Teamsegeln',
-                created: 1439540278,
-                read: true,
-                actor: 'DanielThulfaut',
-                verb: 'NEW_DISCUSSION',
-                description: 'Neue Diskussion eröffnet'
-            },
-            {
-                id: '12334wdfsdr14',
-                path: 'Processes/Vertrieb/CrmPflegen',
-                title: 'CRM pflegen',
-                created: 1439543278,
-                read: true,
-                actor: 'CarstenBehrens',
-                verb: 'COMMENT',
-                description: 'Neuer Kommentar von CarstenBehrens'
-            },
-            {
-                id: '12334wdfsdr15',
-                path: 'Processes/Vertrieb/CrmPflegen',
-                title: 'Vertriebsprozess',
-                created: 1439543178,
-                read: true,
-                actor: 'AlexanderStoffers',
-                verb: 'KVP',
-                description: 'Neuer freigebener Stand'
-            },
-            {
-                id: '12334wdfsdr16',
-                path: 'Processes/Vertrieb/CrmPflegen',
-                title: 'Teamsegeln',
-                created: 1439540278,
-                read: true,
-                actor: 'DanielThulfaut',
-                verb: 'NEW_DISCUSSION',
-                description: 'Neue Diskussion eröffnet'
-            },
-            {
-                id: '12334wdfsdr17',
-                path: 'Processes/Vertrieb/CrmPflegen',
-                title: 'CRM pflegen',
-                created: 1439543278,
-                read: true,
-                actor: 'CarstenBehrens',
-                verb: 'COMMENT',
-                description: 'Neuer Kommentar von CarstenBehrens'
-            },
-            {
-                id: '12334wdfsdr18',
-                path: 'Processes/Vertrieb/CrmPflegen',
-                title: 'Vertriebsprozess',
-                created: 1439543178,
-                read: true,
-                actor: 'AlexanderStoffers',
-                verb: 'KVP',
-                description: 'Neuer freigebener Stand'
-            },
-            {
-                id: '12334wdfsdr19',
-                path: 'Processes/Vertrieb/CrmPflegen',
-                title: 'Teamsegeln',
-                created: 1439540278,
-                read: true,
-                actor: 'DanielThulfaut',
-                verb: 'NEW_DISCUSSION',
-                description: 'Neue Diskussion eröffnet'
-            },
-            {
-                id: '12334wdfsdr20',
-                path: 'Processes/Vertrieb/CrmPflegen',
-                title: 'CRM pflegen',
-                created: 1439543278,
-                read: true,
-                actor: 'CarstenBehrens',
-                verb: 'COMMENT',
-                description: 'Neuer Kommentar von CarstenBehrens'
-            },
-            {
-                id: '12334wdfsdr21',
-                path: 'Processes/Vertrieb/CrmPflegen',
-                title: 'Vertriebsprozess',
-                created: 1439543178,
-                read: true,
-                actor: 'AlexanderStoffers',
-                verb: 'KVP',
-                description: 'Neuer freigebener Stand'
-            },
-            {
-                id: '12334wdfsdr22',
-                path: 'Processes/Vertrieb/CrmPflegen',
-                title: 'Teamsegeln',
-                created: 1439540278,
-                read: true,
-                actor: 'DanielThulfaut',
-                verb: 'NEW_DISCUSSION',
-                description: 'Neue Diskussion eröffnet'
-            },
-            {
-                id: '12334wdfsdr23',
-                path: 'Processes/Vertrieb/CrmPflegen',
-                title: 'CRM pflegen',
-                created: 1439543278,
-                read: true,
-                actor: 'CarstenBehrens',
-                verb: 'COMMENT',
-                description: 'Neuer Kommentar von CarstenBehrens'
-            },
-            {
-                id: '12334wdfsdr24',
-                path: 'Processes/Vertrieb/CrmPflegen',
-                title: 'Vertriebsprozess',
-                created: 1439543178,
-                read: true,
-                actor: 'AlexanderStoffers',
-                verb: 'KVP',
-                description: 'Neuer freigebener Stand'
-            },
-            {
-                id: '12334wdfsdr25',
-                path: 'Processes/Vertrieb/CrmPflegen',
-                title: 'Teamsegeln',
-                created: 1439540278,
-                read: true,
-                actor: 'DanielThulfaut',
-                verb: 'NEW_DISCUSSION',
-                description: 'Neue Diskussion eröffnet'
             }
-
-
             ]
         };
 
         function fetch_items(num, offset) {
             var deferred = $q.defer();
-            var result = angular.copy(mock_data);
-            result.num_items = num;
-            result.items = result.items.slice(offset, offset + num);
-            deferred.resolve(result);
-            
+
+            var url= foswiki.getPreference('SCRIPTURL') + '/rest' + foswiki.getPreference('SCRIPTSUFFIX') + '/WikiActivityPlugin/subscribed_events';
+            $.ajax({
+                url: url,
+                data: {
+                    all: 1
+                },
+                success: function(data, textstatus, jqXHR) {
+                    console.log(data);
+                    var result = {};
+                    result.num_items = data.data.length; // TODO offset etc
+                    result.items = data.data;
+
+                    // XXX rewrites
+                    $.each(result.items, function(idx, item) {
+                        item.path = item.topic;
+                        item.read = false;
+                        var details = window.JSON.parse(item.details);
+                        var args = [details.description.namespace, details.description.string];
+                        $.each(details.description.args, function(idx, item) { args.push(item); });
+                        var description = window.jsi18n.get.apply(window.jsi18n, args);
+                        description = description.replace(/%SCRIPTURL\{([^}]+)\}%/g, foswiki.getPreference('SCRIPTURL') + '/$1' + foswiki.getPreference('SCRIPTSUFFIX'));
+                        description = description.replace(/%SCRIPTURLPATH\{([^}]+)\}%/g, foswiki.getPreference('SCRIPTURLPATH') + '/$1' + foswiki.getPreference('SCRIPTSUFFIX'));
+                        item.description = description;
+                    });
+
+                    deferred.resolve(result);
+                },
+                error: function(jqxhr, textstatus, error) {
+                    deferred.reject(textstatus); // XXX
+                }
+            });
+
             return deferred.promise;
 
         }
