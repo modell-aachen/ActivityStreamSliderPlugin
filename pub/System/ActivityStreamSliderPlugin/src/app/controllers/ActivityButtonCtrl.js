@@ -3,7 +3,7 @@ angular.module('ngActivityStreamSlider').controller('ActivityButtonCtrl', functi
         $rootScope.$broadcast('load_aggregated');
     };
 
-    $scope.total_unread = 0;
+    $scope.total_unread = '';
 
     function get_total_unread() {
         var promise = aggregatedService.get_total_unread();
