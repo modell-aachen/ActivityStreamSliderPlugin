@@ -69,7 +69,7 @@ sub tagSlider {
     # Foswiki::Func::loadTemplate( $templateFile );
 
 
-    return '<div ng-controller="ActivityButtonCtrl"><span id="toggle-sidebar" ng-click="load_items()" class="button icon">Toggle Slider <span class="badge">{{total_unread}}</span></span></div>';
+    return '<div style="display: inline-block;" ng-controller="ActivityButtonCtrl"><span id="toggle-sidebar" ng-click="load_items()" class="button icon"><span class="badge" ng-bind="total_unread"></span></span></div>';
 }
 
 
