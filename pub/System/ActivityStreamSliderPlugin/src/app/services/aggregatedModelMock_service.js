@@ -55,7 +55,7 @@
         function set_read(item){
             var deferred = $q.defer();
 
-            var t = item.maxtime + 1;
+            var t = parseInt(item.maxtime) + 1;
 
             var url= foswiki.getPreference('SCRIPTURL') + '/rest' + foswiki.getPreference('SCRIPTSUFFIX') + '/WikiActivityPlugin/update_subscription';
             $.ajax({
