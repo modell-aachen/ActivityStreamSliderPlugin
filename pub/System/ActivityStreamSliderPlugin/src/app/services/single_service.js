@@ -36,9 +36,9 @@
 
         function toggle_status(item) {
             if(item.read){
-                return singleModelMockService.set_unread(item.id);
+                return singleModelMockService.set_unread(item);
             } else {
-                return singleModelMockService.set_read(item.id);
+                return singleModelMockService.set_read(item);
             }
         }
 

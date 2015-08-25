@@ -76,7 +76,7 @@
             return deferred.promise;
         }
 
-        function set_unread(item){
+        function set_unread(item) {
             var deferred = $q.defer();
 
             var t = item.mintime;

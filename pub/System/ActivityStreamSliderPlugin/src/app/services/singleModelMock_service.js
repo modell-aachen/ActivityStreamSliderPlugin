@@ -48,7 +48,6 @@
                     // XXX rewrites
                     $.each(result.items, function(idx, item) {
                         item.path = item.topic;
-                        item.read = false;
                         var details = window.JSON.parse(item.details);
                         var args = [details.description.namespace, details.description.string];
                         $.each(details.description.args, function(idx, item) { args.push(item); });
@@ -69,18 +68,52 @@
 
         }
 
-        function set_read(){
+        function set_read(item){
             var deferred = $q.defer();
-            deferred.resolve(true);
+            var t = parseInt(item.event_time) + 1;
+
+            var url= foswiki.getPreference('SCRIPTURL') + '/rest' + foswiki.getPreference('SCRIPTSUFFIX') + '/WikiActivityPlugin/update_subscription';
+            $.ajax({
+                url: url,
+                type: 'POST',
+                data: {
+                    base: item.base,
+                    ts: t
+                },
+                success: function(data, textstatus, jqXHR) {
+                    deferred.resolve(true);
+                },
+                error: function(jqxhr, textstatus, error) {
+                    deferred.reject(false); // XXX
+                }
+            });
+
             return deferred.promise;
         }
 
-        function set_unread(){
+        function set_unread(item) {
             var deferred = $q.defer();
-            deferred.resolve(true);
+
+            var t = item.event_time;
+
+            var url= foswiki.getPreference('SCRIPTURL') + '/rest' + foswiki.getPreference('SCRIPTSUFFIX') + '/WikiActivityPlugin/update_subscription';
+            $.ajax({
+                url: url,
+                type: 'POST',
+                data: {
+                    base: item.base,
+                    ts: t
+                },
+                success: function(data, textstatus, jqXHR) {
+                    deferred.resolve(true);
+                },
+                error: function(jqxhr, textstatus, error) {
+                    deferred.reject(false); // XXX
+                }
+            });
+
             return deferred.promise;
         }
-
 
         ////////////
         return service;
