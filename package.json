@@ -12,6 +12,7 @@
     "type": "git",
     "url": "git@github.com:ngbp/ngbp.git"
   },
+  "description": "Frontend for WikiActivityPlugin",
   "dependencies": {},
   "devDependencies": {
     "grunt": "~0.4.1",

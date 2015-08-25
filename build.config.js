@@ -8,7 +8,8 @@ module.exports = {
    * completely built.
    */
   build_dir: 'build',
-  compile_dir: 'bin',
+  compile_dir: '<%= pub_dir %>/bin',
+  pub_dir: 'pub/System/ActivityStreamSliderPlugin',
 
   /**
    * This is a collection of file patterns that refer to our app code (the
@@ -20,13 +21,14 @@ module.exports = {
    * app's unit tests.
    */
   app_files: {
-    js: [ 'src/**/*.js', '!src/**/*.spec.js', '!src/assets/**/*.js' ],
-    
-    atpl: [ 'src/app/templates/*.tpl.html' ],
-    ctpl: [ 'src/common/**/*.tpl.html' ],
+    js: [ '<%= pub_dir %>/src/**/*.js', '!<%= pub_dir %>/src/**/*.spec.js', '!<%= pub_dir %>/src/assets/**/*.js' ],
+    assets: '<%= pub_dir %>/src/assets/*',
 
-    html: [ 'src/index.html' ],
-    less: 'src/less/main.less'
+    atpl: [ '<%= pub_dir %>/src/app/templates/*.tpl.html' ],
+    ctpl: [ '<%= pub_dir %>/src/common/**/*.tpl.html' ],
+
+    html: [ '<%= pub_dir %>/src/index.html' ],
+    less: '<%= pub_dir %>/src/less/main.less'
   },
 
   /**
@@ -49,15 +51,15 @@ module.exports = {
    */
   vendor_files: {
     js: [
-      'vendor/angular/angular.js',
-      'vendor/angular-animate/angular-animate.min.js',
-      'vendor/angular-bootstrap/ui-bootstrap-tpls.min.js',
-      'vendor/placeholders/angular-placeholders-0.0.1-SNAPSHOT.min.js',
-      'vendor/simpler-sidebar/dist/jquery.simpler-sidebar.min.js',
-      'vendor/moment/moment.js',
-      'vendor/moment/locale/de.js',
-      'vendor/angular-moment/angular-moment.min.js',
-      'vendor/angular-sanitize/angular-sanitize.min.js'
+      '<%= pub_dir %>/vendor/angular/angular.js',
+      '<%= pub_dir %>/vendor/angular-animate/angular-animate.min.js',
+      '<%= pub_dir %>/vendor/angular-bootstrap/ui-bootstrap-tpls.min.js',
+      '<%= pub_dir %>/vendor/placeholders/angular-placeholders-0.0.1-SNAPSHOT.min.js',
+      '<%= pub_dir %>/vendor/simpler-sidebar/dist/jquery.simpler-sidebar.min.js',
+      '<%= pub_dir %>/vendor/moment/moment.js',
+      '<%= pub_dir %>/vendor/moment/locale/de.js',
+      '<%= pub_dir %>/vendor/angular-moment/angular-moment.min.js',
+      '<%= pub_dir %>/vendor/angular-sanitize/angular-sanitize.min.js'
     ],
     css: [
     ],

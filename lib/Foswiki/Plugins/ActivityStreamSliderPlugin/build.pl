@@ -12,30 +12,36 @@ sub new {
   return bless( $class->SUPER::new( "ActivityStreamSliderPlugin" ), $class );
 }
 
-sub target_build {
+sub target_compress {
   my $this = shift;
-  # $this->_installDeps();
-}
 
-sub target_compress {}
+  local $| = 1;
+
+  $this->_installDeps();
+
+  print "Building...\n";
+  print $this->sys_action( qw(grunt) );
+  print "\nDone!\n\n";
+
+  print "Uglifying...\n";
+  print $this->sys_action( qw(grunt uglify) );
+  print "\nDone!\n\n";
+}
 
 sub _installDeps {
   my $this = shift;
 
-  local $| = 1;
+  print "Fetching bower dependencies:\n";
+  print $this->sys_action( qw(bower install) );
+  print "\nDone!\n\n";
+
   print "Fetching node dependencies:\n";
   print $this->sys_action( qw(npm install) );
   print "\nDone!\n\n";
 
-  print "Fetching bower dependencies:\n";
-  print $this->sys_action( qw(bower update) );
-  print "\nDone!\n\n";
-
-  print "Building...\n";
-  print $this->sys_action( qw(grunt build) );
-  print "\nDone!\n\n";
 }
 
+package main;
 my $build = ActivityStreamSliderPluginBuild->new('ActivityStreamSliderPlugin');
 $build->build( $build->{target} );
 

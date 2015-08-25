@@ -100,7 +100,7 @@ module.exports = function ( grunt ) {
           { 
             src: [ '**' ],
             dest: '<%= build_dir %>/assets/',
-            cwd: 'src/assets',
+            cwd: '<%= pub_dir %>/<%= app_files.assets %>',
             expand: true
           }
        ]   
@@ -187,11 +187,12 @@ module.exports = function ( grunt ) {
         options: {
           banner: '<%= meta.banner %>'
         },
-        src: [ 
-          '<%= vendor_files.js %>', 
-          'module.prefix', 
-          '<%= build_dir %>/src/**/*.js', 
-          '<%= html2js.app.dest %>', 
+        src: [
+          '<%= vendor_files.js %>',
+          'module.prefix',
+          'templates/*.js',
+          '<%= app_files.js %>',
+          '<%= html2js.app.dest %>',
           '<%= html2js.common.dest %>', 
           'module.suffix' 
         ],
@@ -294,10 +295,10 @@ module.exports = function ( grunt ) {
        */
       app: {
         options: {
-          base: 'src/app'
+          base: '<%= pub_dir %>/src/app'
         },
         src: [ '<%= app_files.atpl %>' ],
-        dest: '<%= build_dir %>/templates-app.js'
+        dest: '<%= build_dir %>/templates/templates-app.js'
       },
 
       /**
@@ -308,7 +309,7 @@ module.exports = function ( grunt ) {
           base: 'src/common'
         },
         src: [ '<%= app_files.ctpl %>' ],
-        dest: '<%= build_dir %>/templates-common.js'
+        dest: '<%= build_dir %>/templates/templates-common.js'
       }
     },
 
@@ -504,7 +505,7 @@ module.exports = function ( grunt ) {
       return file.replace( dirRE, '' );
     });
 
-    grunt.file.copy('src/index.html', this.data.dir + '/index.html', { 
+    grunt.file.copy('pub/System/ActivityStreamSliderPlugin/src/index.html', this.data.dir + '/index.html', { 
       process: function ( contents, path ) {
         return grunt.template.process( contents, {
           data: {
