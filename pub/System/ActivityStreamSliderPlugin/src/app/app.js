@@ -18,13 +18,8 @@ angular.module('ngActivityStreamSlider', [
 
 ;
 
-angular.element(document).ready(function() {
-	$('<div id="ActivityStreamSlider" ng-controller="SliderCtrl"><sidebar id="sidebar"></sidebar>').appendTo('body');
-    setTimeout(function(){
-    	 angular.bootstrap(document, ['ngActivityStreamSlider']);
-    },100);
-   
-    
-    
+jQuery(function($) {
+    $('<div id="ActivityStreamSlider" ng-controller="SliderCtrl"><sidebar id="sidebar"></sidebar>').appendTo('body');
+    angular.bootstrap(document, ['ngActivityStreamSlider']);
 });
 
