@@ -1,7 +1,7 @@
 (function() {
     angular
         .module('ngActivityStreamSlider')
-        .factory('singleModelMockService', singleModelMockService);
+        .factory('singleModelMockService', ['$http', '$q', '$timeout', singleModelMockService]);
 
 
     function singleModelMockService($http, $q, $timeout) {

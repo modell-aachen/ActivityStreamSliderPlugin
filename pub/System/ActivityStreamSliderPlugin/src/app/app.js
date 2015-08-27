@@ -7,13 +7,13 @@ angular.module('ngActivityStreamSlider', [
     'ngSanitize'
 ])
 
-.config(function myAppConfig($controllerProvider) {
+.config(['$controllerProvider', function myAppConfig($controllerProvider) {
     controllerProvider = $controllerProvider;
-})
+}])
 
-.run(function run(amMoment) {
+.run(['amMoment', function run(amMoment) {
 	amMoment.changeLocale('de');
-})
+}])
 
 
 ;

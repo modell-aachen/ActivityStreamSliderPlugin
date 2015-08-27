@@ -1,4 +1,4 @@
-angular.module('ngActivityStreamSlider').controller('ActivityButtonCtrl', function ActivityButtonCtrl($scope, $location, $rootScope, $timeout, aggregatedService) {
+angular.module('ngActivityStreamSlider').controller('ActivityButtonCtrl', ['$scope', '$location', '$rootScope', '$timeout', 'aggregatedService', function ActivityButtonCtrl($scope, $location, $rootScope, $timeout, aggregatedService) {
     $scope.load_items = function() {
         $rootScope.$broadcast('load_aggregated');
     };
@@ -25,4 +25,4 @@ angular.module('ngActivityStreamSlider').controller('ActivityButtonCtrl', functi
 
 
 
-});
+}]);

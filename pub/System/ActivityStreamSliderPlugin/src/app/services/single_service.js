@@ -1,7 +1,7 @@
 (function() {
     angular
         .module('ngActivityStreamSlider')
-        .factory('singleService', singleService);
+        .factory('singleService', ['$http', '$q', 'singleModelMockService', singleService]);
 
 
     function singleService($http, $q, singleModelMockService) {

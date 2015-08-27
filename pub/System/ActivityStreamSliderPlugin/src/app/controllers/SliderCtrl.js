@@ -1,4 +1,4 @@
-angular.module('ngActivityStreamSlider').controller('SliderCtrl', function SliderCtrl($scope, $location, $timeout, aggregatedService, singleService) {
+angular.module('ngActivityStreamSlider').controller('SliderCtrl', ['$scope', '$location', '$timeout', 'aggregatedService', 'singleService', function SliderCtrl($scope, $location, $timeout, aggregatedService, singleService) {
     $scope.aggregated_view = true;
     $scope.setAggregated = function(value) {
     	if(value && $scope.aggregated_view != value){
@@ -74,4 +74,4 @@ angular.module('ngActivityStreamSlider').controller('SliderCtrl', function Slide
 
 
 
-});
+}]);
