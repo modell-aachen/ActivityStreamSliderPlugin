@@ -13,21 +13,30 @@
         };
 
         ////////////
-        
+
         var items = [];
 
         var offset = 0;
 
-        var num = 2;
+        var num = 10;
+
+        var ids = {};
 
         function get_updates() {
             var deferred = $q.defer();
-            
+
             var new_items = aggregatedModelMockService.fetch_items(num,offset);
             new_items.then(function(result) {
-                        items = items.concat(result.items);
-                        offset += result.num_items;
-                        deferred.resolve(items);
+                // we have to make sure that ids do not appear twice. This can
+                // happen, when loading second page but a new item was created
+                // in the meantime (result jumped from page 1 to 2).
+                $(result.items).each(function(idx, item) {
+                    if(ids[item.id]) return;
+                    ids[item.id] = 1;
+                    items.push(item);
+                    offset++;
+                });
+                deferred.resolve(items);
             }, function(error) {
                 deferred.reject(error);
             });
@@ -45,17 +54,16 @@
 
         function flush(){
             items = [];
+            ids = {};
             offset = 0;
         }
 
         function get_total_unread(){
             return aggregatedModelMockService.get_total_unread();
-            
         }
 
-
-
         ////////////
+
         return service;
 
     }

@@ -12,12 +12,16 @@
             get_total_unread: get_total_unread
         };
 
-        function fetch_items(num, offset) {
+        function fetch_items(count, offset) {
             var deferred = $q.defer();
 
             var url= foswiki.getPreference('SCRIPTURL') + '/rest' + foswiki.getPreference('SCRIPTSUFFIX') + '/WikiActivityPlugin/subscribed_events_grouped';
             $.ajax({
                 url: url,
+                data: {
+                    count: count,
+                    offset: offset
+                },
                 success: function(data, textstatus, jqXHR) {
                     var result = {};
                     result.num_items = data.data.length; // TODO offset etc

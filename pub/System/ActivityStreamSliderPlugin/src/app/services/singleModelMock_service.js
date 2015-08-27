@@ -30,14 +30,16 @@
             ]
         };
 
-        function fetch_items(num, offset) {
+        function fetch_items(count, offset) {
             var deferred = $q.defer();
 
             var url= foswiki.getPreference('SCRIPTURL') + '/rest' + foswiki.getPreference('SCRIPTSUFFIX') + '/WikiActivityPlugin/subscribed_events';
             $.ajax({
                 url: url,
                 data: {
-                    all: 1
+                    all: 1,
+                    count: count,
+                    offset: offset
                 },
                 success: function(data, textstatus, jqXHR) {
                     console.log(data);
