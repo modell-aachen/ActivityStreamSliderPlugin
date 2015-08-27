@@ -1,6 +1,5 @@
 !noci
 data/System/ActivityStreamSliderPlugin.txt 0644 Docs
-data/System/ActivityStreamSliderTemplate.txt 0644 Task form
 lib/Foswiki/Plugins/ActivityStreamSliderPlugin.pm 0644 Plugin module
 lib/Foswiki/Plugins/ActivityStreamSliderPlugin/Config.spec 0644
 locale/ActivityStreamSliderPlugin/de.po 0644
