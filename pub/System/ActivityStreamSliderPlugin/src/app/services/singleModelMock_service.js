@@ -42,7 +42,6 @@
                     offset: offset
                 },
                 success: function(data, textstatus, jqXHR) {
-                    console.log(data);
                     var result = {};
                     result.num_items = data.data.length; // TODO offset etc
                     result.items = data.data;

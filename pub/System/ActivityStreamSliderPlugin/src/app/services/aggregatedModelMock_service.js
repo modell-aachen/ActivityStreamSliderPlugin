@@ -43,7 +43,6 @@
                             item.changes[idx] = {description: description};
                         });
                     });
-                    console.log(result); // XXX
 
                     deferred.resolve(result);
                 },
