@@ -4,5 +4,7 @@ lib/Foswiki/Plugins/ActivityStreamSliderPlugin.pm 0644 Plugin module
 lib/Foswiki/Plugins/ActivityStreamSliderPlugin/Config.spec 0644
 locale/ActivityStreamSliderPlugin/de.po 0644
 pub/System/ActivityStreamSliderPlugin/bin/assets/ActivityStreamSliderPlugin.css 0644
+pub/System/ActivityStreamSliderPlugin/bin/assets/ActivityStreamSliderPlugin.css.gz 0644
 pub/System/ActivityStreamSliderPlugin/bin/assets/ActivityStreamSliderPlugin.js 0644
+pub/System/ActivityStreamSliderPlugin/bin/assets/ActivityStreamSliderPlugin.js.gz 0644
 
