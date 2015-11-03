@@ -41,7 +41,7 @@
                             var description = window.jsi18n.get.apply(window.jsi18n, args);
                             description = description.replace(/%SCRIPTURL\{([^}]+)\}%/g, foswiki.getPreference('SCRIPTURL') + '/$1' + foswiki.getPreference('SCRIPTSUFFIX'));
                             description = description.replace(/%SCRIPTURLPATH\{([^}]+)\}%/g, foswiki.getPreference('SCRIPTURLPATH') + '/$1' + foswiki.getPreference('SCRIPTSUFFIX'));
-                            item.changes[idx] = {description: description};
+                            event.description = description;
                         });
                     });
 
