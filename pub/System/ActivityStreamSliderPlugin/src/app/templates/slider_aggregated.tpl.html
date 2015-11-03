@@ -2,7 +2,7 @@
     <tr class="aggregated_content" ng-class="{unread: !item.read, read: item.read}" ng-repeat="item in aggregated_items track by item.id">
         <td>
             <div >
-                <a ng-href="/{{item.path}}"><h2>{{item.title}}</h2></a>
+                <a ng-href="{{item.path}}"><h2>{{item.title}}</h2></a>
                 <ul>
                     <li ng-repeat="event in item.events"><span style="color:grey;font-size:0.8em;"><span  am-time-ago="event.event_time" am-preprocess="unix"></span> - {{event.actor_id}}</span><br><span ng-bind-html="event.description"></span></li>
                 </ul>

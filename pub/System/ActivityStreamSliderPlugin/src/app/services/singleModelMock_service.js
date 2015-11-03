@@ -49,7 +49,12 @@
 
                     // XXX rewrites
                     $.each(result.items, function(idx, item) {
-                        item.path = item.topic;
+                        if(!item.path) {
+                            item.path = foswiki.getPreference('SCRIPTURLPATH') + '/view' + foswiki.getPreference('SCRIPTSUFFIX') + '/';
+                            if(item.topic !== undefined) {
+                                item.path += item.topic.replace('.', '/');
+                            }
+                        }
                         var details = window.JSON.parse(item.details);
                         var args = [details.description.namespace, details.description.string];
                         $.each(details.description.args, function(idx, item) { args.push(item); });

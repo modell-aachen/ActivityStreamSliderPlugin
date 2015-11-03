@@ -30,7 +30,12 @@
 
                     // XXX rewrites
                     $.each(result.items, function(idx, item) {
-                        item.path = item.topic;
+                        if(!item.path) {
+                            item.path = foswiki.getPreference('SCRIPTURLPATH') + '/view' + foswiki.getPreference('SCRIPTSUFFIX') + '/';
+                            if(item.base !== undefined) {
+                                item.path += item.base.replace('.', '/');
+                            }
+                        }
                         item.read = false;
                         item.changes = [];
                         if(!item.id) item.id = item.base;
@@ -42,6 +47,12 @@
                             description = description.replace(/%SCRIPTURL\{([^}]+)\}%/g, foswiki.getPreference('SCRIPTURL') + '/$1' + foswiki.getPreference('SCRIPTSUFFIX'));
                             description = description.replace(/%SCRIPTURLPATH\{([^}]+)\}%/g, foswiki.getPreference('SCRIPTURLPATH') + '/$1' + foswiki.getPreference('SCRIPTSUFFIX'));
                             event.description = description;
+                            if(!event.path) {
+                                event.path = foswiki.getPreference('SCRIPTURLPATH') + '/view' + foswiki.getPreference('SCRIPTSUFFIX') + '/';
+                                if(event.topic !== undefined) {
+                                    event.path += event.topic.replace('.', '/');
+                                }
+                            }
                         });
                     });
 
