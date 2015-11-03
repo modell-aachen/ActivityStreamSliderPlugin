@@ -39,7 +39,7 @@ Foswiki::Func::addToZone( 'head', 'ACTIVITYSTREAMSLIDER::STYLES::font_awesome', 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 STYLE
 
-Foswiki::Func::addToZone( 'script', 'ACTIVITYSTREAMSLIDER::SCRIPTS::angular_js', <<SCRIPT, 'JQUERYPLUGIN::FOSWIKI');
+Foswiki::Func::addToZone( 'script', 'ACTIVITYSTREAMSLIDER::SCRIPTS::angular_js', <<SCRIPT, 'JQUERYPLUGIN::FOSWIKI') unless $topic eq 'WebSearch';
 <script type="text/javascript" src="$pluginURL/bin/assets/ActivityStreamSliderPlugin.js"></script>
 SCRIPT
 
