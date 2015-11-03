@@ -17,6 +17,7 @@
 
             var url= foswiki.getPreference('SCRIPTURL') + '/rest' + foswiki.getPreference('SCRIPTSUFFIX') + '/WikiActivityPlugin/subscribed_events_grouped';
             $.ajax({
+                cache: false,
                 url: url,
                 data: {
                     count: count,
@@ -108,6 +109,7 @@
 
             var url= foswiki.getPreference('SCRIPTURL') + '/rest' + foswiki.getPreference('SCRIPTSUFFIX') + '/WikiActivityPlugin/subscribed_events_count';
             $.ajax({
+                cache:false,
                 url: url,
                 success: function(data, textstatus, jqXHR) {
                     deferred.resolve(data.data.event_bases);

@@ -35,6 +35,7 @@
 
             var url= foswiki.getPreference('SCRIPTURL') + '/rest' + foswiki.getPreference('SCRIPTSUFFIX') + '/WikiActivityPlugin/subscribed_events';
             $.ajax({
+                cache:false,
                 url: url,
                 data: {
                     all: 1,
