@@ -19,7 +19,7 @@ angular.module('ngActivityStreamSlider').controller('ActivityButtonCtrl', ['$sco
 
     setInterval(function(){
     	get_total_unread();
-    }, 5000);
+    }, 300000);
 
 
 
