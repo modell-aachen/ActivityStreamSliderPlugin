@@ -36,7 +36,7 @@ sub initPlugin {
 STYLE
 
 Foswiki::Func::addToZone( 'head', 'ACTIVITYSTREAMSLIDER::STYLES::font_awesome', <<STYLE );
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="$pluginURL/FontAwesome/css/font-awesome.min.css">
 STYLE
 
 Foswiki::Func::addToZone( 'script', 'ACTIVITYSTREAMSLIDER::SCRIPTS::angular_js', <<SCRIPT, 'JQUERYPLUGIN::FOSWIKI') unless $topic eq 'WebSearch';
