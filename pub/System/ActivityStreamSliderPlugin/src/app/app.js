@@ -7,8 +7,13 @@ angular.module('ngActivityStreamSlider', [
     'ngSanitize'
 ])
 
-.config(['$controllerProvider', function myAppConfig($controllerProvider) {
+.config(['$controllerProvider', '$locationProvider', function myAppConfig($controllerProvider, $locationProvider) {
     controllerProvider = $controllerProvider;
+    $locationProvider.html5Mode({
+        enabled : true,
+        requireBase: false,
+        rewriteLinks : false
+    });
 }])
 
 .run(['amMoment', function run(amMoment) {
